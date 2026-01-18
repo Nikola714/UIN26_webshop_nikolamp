@@ -192,3 +192,7 @@ main{
         color: var(--white)
     }
 }
+
+.cart-img{
+    width: 100px;
+}

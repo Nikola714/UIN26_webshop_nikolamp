@@ -48,6 +48,7 @@ function showCart(){
 
         //Skrive ut HTML 
         cartHTML += `<tr>
+                        <td><img class="cart-img" src="website_images/PROD_${product.imagefile}" alt="${product.title}"></td>
                         <td class="title">${product.title}</td>
                         <td class="price">${product.price}</td>
                         <td class="quantity">${ci.quantity}</td>
