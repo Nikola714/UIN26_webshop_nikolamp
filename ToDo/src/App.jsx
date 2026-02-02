@@ -3,37 +3,46 @@ import './style/todocard.scss'
 import './style/layout.scss'
 import Todos from './components/Todos'
 import AddToDo from './components/AddToDo'
-import {useState} from 'react'
-
+import { useState } from 'react'
 
 function App() {
-  const [todoList, setTodoList] = useState()
+        const todoItems = [
+        {
+            id: 0,
+            title: "Gå på butikken",
+            content: "Handle spagetthi og dorull"
+        },
+        {
+            id: 1,
+            title: "Skrive emnerapport",
+            content: "Gå igjennom statestikk og skrive rapport basert på tall og tilbakemeldinger"
+        },
+        {
+            id: 2,
+            title: "Kjøpe kattemat",
+            content: "Kjøpe nytt slankefor..."
+        }
+    ]
+  const [todoList, setTodoList] = useState(todoItems)
   const [todo, setTodo] = useState()
 
-  const todoItems = [
-    {
-      id: 0,
-      title: "Gå på butikken",
-      content: "Handle spagetthi og dorull"
-    },
-    {
-      id: 1,
-      title: "Skrive emneraport",
-      content: "Gå gjennom statestikk og skrive raporrt basert på tall og tilbakemeldinger"
-    },
-    {
-      id: 2,
-      title: "Kjøpe kattemat",
-      content: "Kjøpe ny slankefor..."
-    },
-  ]
-  
 
+
+
+
+  
   return (
     <main>
       <h1>Todo app</h1>
-      <AddToDo todo = {todo} setToDo={setTodo} />
-      <Todos todoItems={todoItems}/>
+      
+        {/* 
+        Her bruker vi Todos-komponentet.
+        Dette komponentet har ansvar for å hente inn og vise
+        alle enkeltstående todo-elementer, slik at App-komponentet
+        holder seg enkel og oversiktlig.
+      */}
+      <AddToDo todo={todo} setTodo={setTodo} setTodoList={setTodoList} />
+      <Todos todoItems={todoList} setTodoList={setTodoList} />
     </main>
   )
 }
