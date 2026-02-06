@@ -4,6 +4,9 @@ import { useState } from 'react'
 function App() {
 
   const [isOpen, setIsOpen] = useState(false)
+  const [cart, setCart] = useState([])
+
+  console.log("Cart", cart)
 
 
   function Header({setIsOpen}){
@@ -38,16 +41,17 @@ function App() {
     return (<h2>Ninjago</h2>)
   }
 
-  function Products({products}){
+  function Products({products, setCart}){
     return (
     <div id="product-list">
-      {products.map(p => <ProductCard key={p.prodid} p={p} />)}
+      {products.map(p => <ProductCard key={p.prodid} p={p} setCart={setCart}/>)}
       
     </div>)
   }
 
-  function ProductCard({p}){
+  function ProductCard({p, setCart}){
     const handleClick = ()=>{
+      setCart("Funker")
       console.log("Legg i handlekurv")
     }
 
@@ -95,7 +99,7 @@ function App() {
       <Nav />
       <main>
         <CategoryTitle />
-        <Products products={products} />
+        <Products products={products} setCart={setCart} />
       </main>
       <Cart isOpen={isOpen} />
     </div>
