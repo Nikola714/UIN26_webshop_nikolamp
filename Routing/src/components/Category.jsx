@@ -1,9 +1,10 @@
 // Importerer useParams-hooken fra react-router-dom
 // useParams brukes for å hente URL-parametere (f.eks :slug)
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useOutletContext, useParams } from 'react-router-dom'
 
 export default function Category(){
+    const {apiEndpoint, defaultApiUrl} = useOutletContext()
 
     const [apiData, setApiData] = useState([])
 
@@ -11,13 +12,15 @@ export default function Category(){
     // Siden vi har definert path=':slug' i App.jsx, vil den hente verdien som står der
     // Eksempel: /categories/sko → slug = "sko"
     const { slug } = useParams()
+    console.log("Denne kommer fra Category", apiEndpoint)
+
     const getSingleData = async()=>{
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${slug}`)
+    const response = await fetch(apiEndpoint ? apiEndpoint : defaultApiUrl + slug)
     const data = await response.json()
+    
     setApiData(data)
     }
 
-    console.log(apiData)
 
     useEffect(()=>{
         getSingleData()

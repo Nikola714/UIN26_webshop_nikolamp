@@ -34,13 +34,14 @@ function App() {
 
           {/* Index route for /categories */}
           {/* Når path er /categories rendres Categories inni CategoryLayout */}
-          <Route index element={<Categories />} />
+          <Route index element={<h1>Kategorier</h1>} />
 
           {/* Dynamisk route */}
           {/* :slug er en URL-parameter */}
           {/* Eksempel: /categories/sport */}
           {/* Da vil slug = "sport" */}
-          <Route path=':slug' element={<Category />} />
+          <Route path=':slug' element={<Categories />} />
+          <Route path=':slug/:cat' element={<Category />} />
 
         </Route>
 
