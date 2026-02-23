@@ -45,7 +45,7 @@ export default function CategoryLayout(){
           
           Det bestemmes av routene definert i App.jsx
         */}
-        <Outlet context={{apiEndpoint, defaultApiUrl }}/>
+        <Outlet context={{apiEndpoint, defaultApiUrl, setApiEndpoint }}/>
     </>
     )
 }
